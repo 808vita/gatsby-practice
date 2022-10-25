@@ -2,6 +2,9 @@ import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
 
 export default function Navbar() {
+  //capitalize the components names!!
+  // the useStaticQuery might throw errors
+  // create query name for graphql queries
   const data = useStaticQuery(graphql`
     query SiteInfos {
       site {
