@@ -2,10 +2,11 @@ import { graphql, Link } from "gatsby"
 import React from "react"
 import Layout from "../components/Layout"
 import * as styles from "../styles/home.module.css"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 export default function Home({ data }) {
   console.log(data)
-  const { title, description } = data.site.siteMetadata
+  const image = getImage(data.file.childImageSharp.gatsbyImageData)
 
   return (
     <Layout>
@@ -18,21 +19,22 @@ export default function Home({ data }) {
             My Portfolio Projects.
           </Link>
         </div>
-        <img src="banner.png" alt="banner" style={{ maxWidth: "100%" }} />
-        <p>
-          {title} - {description}
-        </p>
+
+        <GatsbyImage image={image} alt="Banner" />
       </section>
     </Layout>
   )
 }
 
 export const query = graphql`
-  query SiteInfo {
-    site {
-      siteMetadata {
-        description
-        title
+  query banner {
+    file(relativePath: { eq: "banner.png" }) {
+      childImageSharp {
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+          formats: [AUTO, WEBP]
+        )
       }
     }
   }
