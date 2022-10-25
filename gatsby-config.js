@@ -20,5 +20,6 @@ module.exports = {
     title: "ooF oof",
     description: "ooof oof oof oof",
     copyright: "oof oof oof oofoof ooof ooof",
+    contact: "oof@oof.oof",
   },
 }
